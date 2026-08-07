@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { siteConfig, rotatingRoles } from "@/lib/data";
+import { ArrowRight, FileDown, Radio } from "lucide-react";
+import { siteConfig, rotatingRoles, achievements } from "@/lib/data";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -19,17 +20,14 @@ function useTypewriter(words: string[]) {
         if (!deleting) {
           const next = current.slice(0, text.length + 1);
           setText(next);
-          if (next === current) setTimeout(() => setDeleting(true), 1600);
+          if (next === current) setTimeout(() => setDeleting(true), 1800);
         } else {
           const next = current.slice(0, text.length - 1);
           setText(next);
-          if (next === "") {
-            setDeleting(false);
-            setWordIdx((wordIdx + 1) % words.length);
-          }
+          if (next === "") { setDeleting(false); setWordIdx((wordIdx + 1) % words.length); }
         }
       },
-      deleting ? 35 : 85
+      deleting ? 30 : 75
     );
     return () => clearTimeout(timeout);
   }, [text, deleting, wordIdx, words]);
@@ -37,155 +35,108 @@ function useTypewriter(words: string[]) {
   return text;
 }
 
-const marqueeItems = [
-  "THREAT DETECTION", "INCIDENT RESPONSE", "SIEM", "EDR / XDR", "MITRE ATT&CK",
-  "THREAT HUNTING", "LOG ANALYSIS", "MALWARE ANALYSIS", "BLUE TEAM OPS", "IOC INVESTIGATION",
+const telemetryFeed = [
+  { label: "Endpoint", status: "Monitored", tone: "ok" },
+  { label: "Cloud (Azure O365)", status: "Active", tone: "ok" },
+  { label: "Email Gateway", status: "Scanning", tone: "warn" },
+  { label: "Network Perimeter", status: "Clear", tone: "ok" },
 ];
 
 export default function Hero() {
   const typed = useTypewriter(rotatingRoles);
 
   return (
-    <section id="home" className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-28">
-      <div
-        className="absolute inset-0 z-0 animate-grid-pan opacity-60"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,229,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.045) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-        }}
-      />
+    <section id="home" className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-24">
+      <div className="absolute inset-0 z-0 grid-overlay opacity-40" style={{ maskImage: "radial-gradient(ellipse at 60% 30%, black 30%, transparent 75%)" }} />
+      <HeroScene />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[60vh] bg-gradient-to-b from-navy/40 via-transparent to-transparent" />
 
-      <div className="container relative z-10 mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-16 px-6 pb-20 md:grid-cols-[1.2fr_1fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/5 px-4 py-1.5 font-mono text-[0.76rem] text-accent">
-            <span className="relative flex h-[7px] w-[7px]">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-[7px] w-[7px] rounded-full bg-accent" />
+      <div className="container relative z-10 mx-auto grid max-w-[1240px] grid-cols-1 items-center gap-14 px-6 pb-16 lg:grid-cols-[1.15fr_0.85fr]">
+        <motion.div initial={{ opacity: 0, y: 32 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.16,1,0.3,1] }}>
+          <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-1.5 font-mono text-[0.72rem] tracking-wide text-text2">
+            <Radio size={12} className="text-accent" />
+            <span className="relative flex h-[6px] w-[6px]">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+              <span className="relative inline-flex h-[6px] w-[6px] rounded-full bg-accent" />
             </span>
-            Available for SOC / Threat Hunting Roles
+            Actively monitoring · Available for Senior SOC / Threat Hunting roles
           </span>
 
-          <h1 className="mb-3 text-4xl font-extrabold leading-[1.12] tracking-tight md:text-6xl">
-            Securing systems <br /> as <span className="gradient-text">{siteConfig.name}</span>
+          <h1 className="font-display mb-4 text-[2.6rem] font-semibold leading-[1.08] tracking-tight text-text md:text-[3.6rem]">
+            Defending enterprise <br />
+            systems as <span className="text-gradient">{siteConfig.name}</span>
           </h1>
 
-          <h2 className="mb-6 flex min-h-[2rem] items-center gap-2 font-mono text-xl font-semibold text-primary md:text-2xl">
-            <span className="font-bold text-accent">&gt;_</span> {typed}
-            <span className="animate-blink text-accent">|</span>
+          <h2 className="mb-7 flex min-h-[2rem] items-center gap-2 font-mono text-lg text-primary2 md:text-xl">
+            <span className="text-accent">›</span> {typed}
+            <span className="animate-blink text-accent">_</span>
           </h2>
 
-          <p className="mb-8 max-w-[520px] text-base leading-relaxed text-text2">
+          <p className="mb-9 max-w-[540px] text-[0.98rem] leading-relaxed text-text2">
             {siteConfig.description}
           </p>
 
-          <div className="mb-7 flex flex-wrap gap-3.5">
+          <div className="mb-10 flex flex-wrap gap-3.5">
             <a
-              href="#resume"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-7 py-3.5 text-sm font-semibold text-[#03131a] shadow-glow transition-transform hover:-translate-y-1 hover:shadow-glow-green"
+              href="/Kishor_Gorade_Resume.pdf"
+              download
+              className="group inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-white transition-all hover:bg-primary2 hover:shadow-glow"
             >
+              <FileDown size={16} />
               Download Resume
             </a>
             <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-7 py-3.5 text-sm font-semibold backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary hover:text-primary"
+              href="#experience"
+              className="group inline-flex items-center gap-2 rounded-md border border-white/12 bg-white/[0.02] px-6 py-3.5 text-sm font-medium text-text transition-all hover:border-primary/50 hover:text-primary2"
             >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-7 py-3.5 text-sm font-semibold backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary hover:text-primary"
-            >
-              Contact Me
+              View Experience
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
 
-          <div className="flex gap-3">
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-[0.7rem] font-bold backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary hover:text-primary"
-            >
-              GH
-            </a>
-            <a
-              href={siteConfig.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-[0.7rem] font-bold backdrop-blur-md transition-all hover:-translate-y-1 hover:border-primary hover:text-primary"
-            >
-              IN
-            </a>
+          <div className="grid max-w-[440px] grid-cols-3 gap-6 border-t border-white/8 pt-6">
+            {achievements.slice(0, 3).map((a) => (
+              <div key={a.label}>
+                <p className="font-display text-2xl font-semibold text-text">{a.value}+</p>
+                <p className="mt-1 text-[0.72rem] leading-tight text-text3">{a.label}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative flex justify-center"
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.16,1,0.3,1] }}
+          className="relative hidden lg:block"
         >
-          <HeroScene />
-          <div className="relative z-10 h-[320px] w-[260px] overflow-hidden rounded-[22px] border border-primary/20 bg-gradient-to-br from-card to-bg2 shadow-[0_0_70px_rgba(0,229,255,0.14)] md:h-[380px] md:w-[320px]">
-            <div className="absolute inset-0 flex items-center justify-center text-6xl font-extrabold text-primary/15 md:text-7xl">
-              KG
+          <div className="glass-strong relative overflow-hidden rounded-2xl p-5 shadow-card">
+            <div className="mb-4 flex items-center justify-between border-b border-white/6 pb-3">
+              <span className="font-mono text-[0.68rem] tracking-[2px] text-text3">SECURITY TELEMETRY</span>
+              <span className="flex items-center gap-1.5 font-mono text-[0.65rem] text-accent">
+                <span className="h-1.5 w-1.5 animate-blink rounded-full bg-accent" />
+                LIVE
+              </span>
             </div>
-            <motion.div
-              className="absolute left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-primary to-transparent shadow-glow"
-              animate={{ top: ["0%", "100%"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            />
-            {["top-2.5 left-2.5 border-t-2 border-l-2", "top-2.5 right-2.5 border-t-2 border-r-2", "bottom-2.5 left-2.5 border-b-2 border-l-2", "bottom-2.5 right-2.5 border-b-2 border-r-2"].map((cls, i) => (
-              <div key={i} className={`absolute h-4 w-4 border-primary/70 ${cls}`} />
-            ))}
-          </div>
-
-          {[
-            { text: "Threat Blocked", cls: "-left-[12%] top-[5%]", dot: "bg-accent shadow-glow-green" },
-            { text: "Alert Triaged", cls: "-left-[18%] bottom-[15%]", dot: "bg-warning" },
-            { text: "IOC Matched", cls: "-right-[10%] -bottom-[4%]", dot: "bg-accent shadow-glow-green" },
-          ].map((card, i) => (
-            <motion.div
-              key={card.text}
-              className={`absolute z-20 flex items-center gap-2 rounded-lg border border-white/10 bg-card/65 px-4 py-2.5 font-mono text-[0.8rem] backdrop-blur-md ${card.cls}`}
-              animate={{ y: [0, -14, 0] }}
-              transition={{ duration: 4, repeat: Infinity, delay: i * 1, ease: "easeInOut" }}
-            >
-              <span className={`h-1.5 w-1.5 rounded-full ${card.dot}`} />
-              {card.text}
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      <div className="relative z-10 mt-4 overflow-hidden border-t border-white/5 py-4">
-        <div className="flex">
-          {[0, 1].map((row) => (
-            <div
-              key={row}
-              className="flex animate-marquee gap-10 whitespace-nowrap pr-10 font-mono text-sm tracking-wide text-text2"
-              style={row === 1 ? { animationDelay: "-15s" } : undefined}
-              aria-hidden={row === 1}
-            >
-              {marqueeItems.map((item) => (
-                <span key={item} className="flex items-center gap-10">
-                  {item} <span className="text-primary">◆</span>
-                </span>
+            <div className="flex flex-col gap-2.5">
+              {telemetryFeed.map((t) => (
+                <div key={t.label} className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-3.5 py-2.5">
+                  <span className="text-[0.82rem] text-text2">{t.label}</span>
+                  <span className={`rounded px-2 py-0.5 font-mono text-[0.65rem] ${t.tone === "ok" ? "bg-accent/10 text-accent" : "bg-signal/10 text-signal"}`}>
+                    {t.status}
+                  </span>
+                </div>
               ))}
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="absolute bottom-24 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-1.5 font-mono text-[0.72rem] tracking-wide text-text2 md:flex">
-        <span className="h-[30px] w-px animate-pulse bg-gradient-to-b from-primary to-transparent" />
-        Scroll
+            <div className="mt-4 h-px w-full overflow-hidden bg-white/5">
+              <motion.span
+                className="block h-full w-1/3 bg-gradient-to-r from-transparent via-primary to-transparent"
+                animate={{ x: ["-100%", "300%"] }}
+                transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

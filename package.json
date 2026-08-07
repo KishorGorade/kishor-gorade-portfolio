@@ -1,6 +1,6 @@
 {
   "name": "kishor-gorade-soc-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.5",
+    "next": "14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "framer-motion": "^11.3.19",
+    "framer-motion": "^11.11.17",
     "@react-three/fiber": "^8.16.8",
     "@react-three/drei": "^9.108.4",
     "three": "^0.160.1",
-    "lucide-react": "^0.408.0",
+    "lucide-react": "^0.454.0",
+    "lenis": "^1.1.14",
     "clsx": "^2.1.1"
   },
   "devDependencies": {
@@ -28,7 +29,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5"
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.35"
   }
 }

@@ -2,49 +2,15 @@
 
 import { motion } from "framer-motion";
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 import { skills } from "@/lib/data";
 
 export default function Skills() {
-  return (
-    <section id="skills" className="section bg-bg2 py-28">
-      <div className="container mx-auto max-w-[1200px] px-6">
-        <Reveal>
-          <p className="mb-3 font-mono text-[0.76rem] uppercase tracking-[3px] text-primary">02 / Arsenal</p>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="mb-14 text-3xl font-extrabold tracking-tight md:text-4xl">
-            Tools &amp; <span className="gradient-text">Technical Skills</span>
-          </h2>
-        </Reveal>
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {skills.map((s, i) => (
-            <motion.div
-              key={s.cat}
-              initial={{ opacity: 0, y: 30, scale: 0.94 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: (i % 4) * 0.09 }}
-              whileHover={{ y: -4 }}
-              className="rounded-2xl border border-white/5 bg-card p-6 transition-[border-color,box-shadow] hover:border-primary hover:shadow-glow"
-            >
-              <div className="mb-3.5 flex items-center gap-2.5 text-[0.96rem] font-bold text-primary">
-                <span>{s.icon}</span> {s.cat}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {s.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md border border-white/5 bg-primary/5 px-2.5 py-1 text-[0.74rem] text-text2 transition-colors hover:border-accent hover:text-accent"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+ return <section id="skills" className="border-y border-white/[0.045] bg-bg2 py-28 md:py-36"><div className="container mx-auto max-w-[1240px] px-6">
+  <Reveal><SectionHeader index="02" eyebrow="Capability ecosystem" title={<>Enterprise tooling, <span className="text-gradient">operational context.</span></>}>A focused security stack across monitoring, investigation, cloud, detection engineering, and automation.</SectionHeader></Reveal>
+  <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{skills.map((s,i)=><motion.article key={s.cat} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.1}} transition={{duration:.45,delay:(i%4)*.06}} className="enterprise-card spotlight-card min-h-[220px] rounded-xl p-5">
+   <div className="mb-5 flex items-center justify-between"><span className="font-mono text-[.65rem] tracking-[.14em] text-accent">CAP.{String(i+1).padStart(2,'0')}</span><span className="text-[1.15rem] opacity-70">{s.icon}</span></div>
+   <h3 className="font-display mb-4 text-base font-medium">{s.cat}</h3><div className="flex flex-wrap gap-1.5">{s.tags.map(t=><span key={t} className="rounded border border-white/[.07] bg-white/[.025] px-2 py-1 text-[.69rem] text-text2">{t}</span>)}</div>
+  </motion.article>)}</div>
+ </div></section>;
 }

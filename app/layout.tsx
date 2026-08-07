@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/data";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
   display: "swap",
 });
 
@@ -23,12 +30,15 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
+    "Security Operations Engineer",
     "SOC Analyst",
     "Security Operations Center",
     "Threat Hunting",
     "Incident Response",
     "SIEM",
     "EDR",
+    "Elastic SIEM",
+    "Qualys",
     "Blue Team",
     "MITRE ATT&CK",
     "Cybersecurity Portfolio",
@@ -102,6 +112,7 @@ const jsonLd = {
     "MITRE ATT&CK",
     "Malware Analysis",
     "Network Security",
+    "Cloud Security",
   ],
 };
 
@@ -111,7 +122,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jbMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable} ${jbMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -119,7 +130,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased grain bg-bg text-text">
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );

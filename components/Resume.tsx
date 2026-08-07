@@ -8,7 +8,7 @@ const terminalLines = [
   "$ whoami",
   "kishor.gorade — Security Operations Engineer",
   "$ cat skills.txt",
-  "Splunk | QRadar | CrowdStrike | Qualys EDR | IR",
+  "Elastic SIEM | Qualys EDR | Azure O365 | MITRE ATT&CK",
   "$ ./download_resume.sh",
   "Resume ready for download...",
 ];
@@ -64,7 +64,7 @@ export default function Resume() {
               <div className="whitespace-pre-wrap text-accent">{output}</div>
             </div>
             <a
-              href="/KISHOR_GORADE_Security_Operations_Engineer.pdf"
+              href="/Kishor_Gorade_Resume.pdf"
               download
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-7 py-3.5 text-sm font-semibold text-[#03131a] shadow-glow transition-transform hover:-translate-y-1 hover:shadow-glow-green"
             >

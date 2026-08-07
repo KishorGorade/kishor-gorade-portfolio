@@ -1,86 +1,93 @@
 export const siteConfig = {
   name: "Kishor Gorade",
   role: "Security Operations Engineer",
-  headline: "SIEM Monitoring • Incident Response • Threat Hunting • EDR/XDR • Vulnerability Management",
+  headline: "24x7 SOC Monitoring • Incident Response • Threat Hunting • Detection Engineering • Cloud & Email Security",
   description:
-    "Proactive and analytical Security Operations Engineer with 2+ years of hands-on experience in SOC monitoring, incident response, and threat analysis. Skilled in SIEM (Splunk, QRadar) and EDR tools (CrowdStrike, Qualys EDR) for real-time detection, triage, and remediation of security incidents.",
+    "Results-driven Security Operations Engineer with 3+ years of experience across 24x7 SOC monitoring, incident response, and threat hunting in enterprise environments. Skilled in Elastic SIEM, Qualys EDR, Qualys VMDR, and Azure O365 to detect, investigate, and remediate threats across endpoint, network, cloud, and email attack surfaces.",
   url: "https://kishorgorade.dev",
   email: "kishorgorade007@gmail.com",
   phone: "+91 77589 82610",
   location: "Pune, Maharashtra, India",
-  github: "https://github.com/kishorgorade", // TODO: replace with your real GitHub username
+  github: "https://github.com/kishorgorade",
   linkedin: "https://linkedin.com/in/kishor-gorade-691a90251",
 };
 
 export const rotatingRoles = [
   "Security Operations Engineer",
-  "SOC Analyst",
   "Threat Hunter",
   "Incident Responder",
+  "Detection Engineer",
   "SIEM Specialist",
 ];
 
 export const stats = [
-  { label: "Years Experience", value: 2 },
-  { label: "Tools Mastered", value: 20 },
-  { label: "Certifications", value: 5 },
+  { label: "Years Experience", value: 3 },
+  { label: "Tools Mastered", value: 22 },
+  { label: "Certifications", value: 4 },
   { label: "Frameworks Used", value: 3 },
 ];
 
 export const achievements = [
-  { label: "Alerts Investigated", value: 1500 },
-  { label: "Incidents Resolved", value: 300 },
-  { label: "Playbooks Authored", value: 15 },
-  { label: "Tools & Platforms", value: 20 },
+  { label: "Alerts Investigated", value: 2200 },
+  { label: "Incidents Resolved", value: 450 },
+  { label: "Automation Scripts Built", value: 20 },
+  { label: "Tools & Platforms", value: 22 },
 ];
 
 export const skills = [
-  { cat: "SIEM", icon: "📊", tags: ["Splunk", "QRadar", "Use Case Development", "Correlation & Alert Analysis"] },
-  { cat: "EDR / XDR", icon: "🛡️", tags: ["CrowdStrike", "Qualys EDR/XDR"] },
-  { cat: "Network & Perimeter", icon: "🌐", tags: ["Palo Alto Firewall", "Zscaler", "BlueCoat", "Imperva WAF", "Silverline"] },
-  { cat: "Threat Intelligence", icon: "🎯", tags: ["Recorded Future", "VirusTotal", "AnyRun", "MITRE ATT&CK"] },
-  { cat: "Incident Response", icon: "🚨", tags: ["Threat Hunting", "Malware & Phishing Analysis", "RCA Documentation", "Forensic Investigation", "NIST IR Framework"] },
-  { cat: "Vulnerability Mgmt", icon: "🩹", tags: ["Qualys VMDR", "Patch Coordination", "Risk Prioritization"] },
-  { cat: "Cloud & Automation", icon: "☁️", tags: ["Azure", "AWS", "PowerShell", "Python", "SOAR", "UEBA Analytics"] },
-  { cat: "Ticketing & Reporting", icon: "🗂️", tags: ["ServiceNow", "OS Ticket", "SOC Dashboards", "Incident Reports"] },
+  { cat: "SIEM Engineering", icon: "📊", tags: ["Elastic SIEM", "Splunk", "QRadar", "Microsoft Sentinel", "Alert Triage", "Rule Optimization"] },
+  { cat: "EDR / XDR", icon: "🛡️", tags: ["Qualys EDR", "CrowdStrike", "Endpoint Investigation", "Windows Security", "Linux Security"] },
+  { cat: "Threat Intelligence & Hunting", icon: "🎯", tags: ["MITRE ATT&CK", "Cyber Kill Chain", "IOC/IOA Analysis", "VirusTotal", "AnyRun"] },
+  { cat: "Cloud & Email Security", icon: "☁️", tags: ["Azure O365", "OCI", "AWS", "GCP", "Proofpoint TAP", "BEC Investigation"] },
+  { cat: "Automation & Programming", icon: "🤖", tags: ["Python", "PowerShell", "SOAR Playbook Support", "Automation Scripting"] },
+  { cat: "Vulnerability & Detection", icon: "🩹", tags: ["Qualys VMDR", "Detection Tuning", "False Positive Reduction", "UEBA"] },
+  { cat: "Frameworks & Compliance", icon: "📐", tags: ["MITRE ATT&CK", "NIST IR Framework", "Root Cause Analysis"] },
+  { cat: "Documentation & Ticketing", icon: "🗂️", tags: ["ServiceNow", "OS Ticket", "Jira", "Incident Reporting", "SOPs & Playbooks"] },
 ];
 
 export const experience = [
   {
-    title: "Security Operations Engineer",
-    date: "Present · Qualys",
-    items: ["SIEM Monitoring", "Incident Response", "Threat Hunting", "EDR/XDR Triage", "Vulnerability Coordination", "SOC Automation"],
+    title: "Security Operations Engineer — Qualys",
+    date: "January 2026 — Present",
+    items: [
+      "24x7 SIEM/EDR/Cloud Alert Monitoring",
+      "Endpoint, Network, Email & Cloud IR",
+      "MITRE ATT&CK Threat Hunting",
+      "Elastic SIEM + Qualys EDR + Azure O365 + Proofpoint TAP Correlation",
+      "IOC Analysis via VirusTotal & AnyRun",
+      "Azure O365 & Phishing/BEC Investigation",
+      "Qualys VMDR Vulnerability Management",
+      "CSIRT Collaboration & RCA",
+      "Detection Tuning & SOAR Playbook Automation",
+    ],
   },
   {
-    title: "SOC Analyst",
-    date: "03 July 2023 — Present · AARNA Technologies Pvt. Ltd.",
+    title: "Jr. SOC Analyst — AARNA Technologies Pvt. Ltd.",
+    date: "July 2023 — December 2025",
     items: [
-      "Monitor & analyze alerts via Splunk, CrowdStrike, Qualys EDR",
-      "L2/L3 escalation investigation & log analysis",
-      "Malware & network traffic investigation",
-      "CSIRT collaboration for containment & recovery",
-      "Threat hunting & IOC identification",
-      "Threat intel integration into SOC workflows",
-      "Firewall / IDS-IPS / proxy tuning",
-      "IR playbooks & SOP development",
-      "Post-incident RCA documentation",
-      "Python & PowerShell SOC automation",
-      "Qualys VMDR vulnerability coordination",
+      "Splunk SIEM & CrowdStrike EDR Alert Triage",
+      "Log Analysis & Malware Investigation",
+      "CSIRT & IT Infrastructure Collaboration",
+      "Threat Hunting & IOC Correlation",
+      "Recorded Future & VirusTotal Threat Intel Integration",
+      "Firewall / IDS-IPS / Proxy Optimization",
+      "IR Playbooks & SOP Authoring",
+      "Post-Incident RCA Reviews",
+      "Python & PowerShell SOC Automation",
     ],
   },
 ];
 
 export const projects = [
-  { icon: "🖥️", title: "SOC Alert Triage Automation", desc: "Python/PowerShell scripts that auto-enrich alerts with threat intel and reduce manual triage time.", tech: ["Python", "PowerShell", "VirusTotal API"] },
-  { icon: "📄", title: "Splunk Correlation Use Cases", desc: "Custom correlation searches and detection rules tuned to reduce false positives across SIEM data.", tech: ["Splunk", "SPL", "MITRE ATT&CK"] },
-  { icon: "🔎", title: "IOC Cross-Source Correlator", desc: "Correlates IOCs across SIEM, EDR, and threat intel feeds to speed up threat hunting workflows.", tech: ["Python", "Recorded Future", "QRadar"] },
-  { icon: "🧠", title: "Incident Response Playbooks", desc: "Authored SOPs and IR playbooks aligned to the NIST IR framework for consistent incident handling.", tech: ["NIST IR", "Documentation"] },
-  { icon: "🛠️", title: "Qualys VMDR Risk Dashboard", desc: "Vulnerability prioritization dashboard combining VMDR data with asset criticality scoring.", tech: ["Qualys VMDR", "Python"] },
-  { icon: "🦠", title: "Malware & Phishing Analysis Reports", desc: "Static & dynamic analysis write-ups on real phishing kits and malware samples using sandboxing.", tech: ["AnyRun", "VirusTotal", "CrowdStrike"] },
+  { icon: "🕵️", title: "Vigilance — Threat Intel Aggregation Platform", desc: "Co-designed an internal platform consolidating multiple threat intelligence feeds into one centralized dashboard, improving indicator validation and investigation speed.", tech: ["Threat Intel", "Dashboarding", "Indicator Validation"] },
+  { icon: "⚙️", title: "SOAR Automation — Orchestration & Response", desc: "Supported design, testing, and validation of SOAR playbooks to improve incident enrichment and response execution, accelerating IR times.", tech: ["SOAR", "Automation", "Playbooks"] },
+  { icon: "🎚️", title: "Alert Fine Tuning — SIEM Detection Optimization", desc: "Partnered with senior security engineers to fine-tune recurring SIEM alerts via false-positive analysis and correlation rule optimization.", tech: ["Splunk", "Elastic SIEM", "Rule Tuning"] },
+  { icon: "🐍", title: "Python Automation — SOC Tooling", desc: "Built an IOC Validator, Threat Intelligence Lookup tool, Log Parsing Automation, and Investigation Helper Scripts to cut repetitive SOC work.", tech: ["Python", "IOC Validator", "Log Parsing"] },
+  { icon: "🔎", title: "IOC Cross-Source Correlator", desc: "Correlates IOCs across SIEM, EDR, and threat intel feeds to speed up threat hunting workflows across enterprise environments.", tech: ["Python", "VirusTotal", "AnyRun"] },
+  { icon: "📄", title: "Incident Response Playbooks & SOPs", desc: "Authored and maintained IR playbooks and SOPs aligned to the NIST IR framework to standardize SOC operations and RCA documentation.", tech: ["NIST IR", "Documentation"] },
 ];
 
 export const certifications = [
-  { icon: "🏅", name: "Network Defense Essentials", org: "EC-Council" },
   { icon: "🩹", name: "Executive Vulnerability Management", org: "EC-Council" },
   { icon: "🚨", name: "Incident Response Lifecycle", org: "EC-Council" },
   { icon: "🏢", name: "Enterprise Security Leadership: World-Class SOC", org: "EC-Council" },
@@ -99,9 +106,9 @@ export const testimonials: { text: string; name: string; role: string }[] = [
 ];
 
 export const blogPosts = [
-  { icon: "📝", tag: "Threat Report", title: "Anatomy of a Phishing Campaign", desc: "Breaking down a real-world phishing kit and its detection artifacts." },
-  { icon: "🧪", tag: "Write-up", title: "Detecting Lateral Movement with SIEM", desc: "Correlation rules that catch pass-the-hash and RDP abuse early." },
-  { icon: "🔬", tag: "Malware Analysis", title: "Reverse Engineering a Stealer", desc: "Static and dynamic analysis notes from a recent infostealer sample." },
+  { icon: "📝", tag: "Threat Report", title: "Anatomy of a Phishing Campaign", desc: "Breaking down a real-world phishing kit and its detection artifacts across email gateways." },
+  { icon: "🧪", tag: "Write-up", title: "Detecting Lateral Movement with SIEM", desc: "Correlation rules that catch pass-the-hash and RDP abuse early using Elastic SIEM." },
+  { icon: "🔬", tag: "Malware Analysis", title: "Reverse Engineering a Stealer", desc: "Static and dynamic analysis notes from a recent infostealer sample via AnyRun." },
 ];
 
 export const navLinks = [
@@ -117,9 +124,9 @@ export const navLinks = [
 export const commandItems = [
   { icon: "🏠", title: "Home", sub: "Back to hero section", tag: "NAV", href: "#home" },
   { icon: "👤", title: "About", sub: "Bio, timeline & live threat radar", tag: "NAV", href: "#about" },
-  { icon: "🛡️", title: "Skills", sub: "SIEM, EDR, Networking, Tools...", tag: "NAV", href: "#skills" },
+  { icon: "🛡️", title: "Skills", sub: "SIEM, EDR, Cloud, Automation...", tag: "NAV", href: "#skills" },
   { icon: "📈", title: "Experience", sub: "Security Operations Engineer @ Qualys", tag: "NAV", href: "#experience" },
-  { icon: "🗂️", title: "Projects", sub: "Alert Automation, Splunk Use Cases, IOC Correlator...", tag: "NAV", href: "#projects" },
+  { icon: "🗂️", title: "Projects", sub: "Vigilance, SOAR Automation, Python Tooling...", tag: "NAV", href: "#projects" },
   { icon: "🎓", title: "Certifications", sub: "EC-Council, Cisco...", tag: "NAV", href: "#certifications" },
   { icon: "📰", title: "Blog", sub: "Threat write-ups & malware analysis", tag: "NAV", href: "#blog" },
   { icon: "📄", title: "Resume", sub: "Download PDF resume", tag: "NAV", href: "#resume" },
