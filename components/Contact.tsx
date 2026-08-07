@@ -1,76 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { Mail, Linkedin, Github, MapPin, Phone } from "lucide-react";
 import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
 import { siteConfig } from "@/lib/data";
 
+const items = [
+  { icon: Mail, label: 'Email', value: siteConfig.email, href: `mailto:${siteConfig.email}` },
+  { icon: Linkedin, label: 'LinkedIn', value: 'Professional profile', href: siteConfig.linkedin },
+  { icon: Github, label: 'GitHub', value: 'Code and profile', href: siteConfig.github },
+  { icon: MapPin, label: 'Location', value: siteConfig.location },
+  { icon: Phone, label: 'Phone', value: siteConfig.phone },
+];
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-  };
-
   return (
-    <section id="contact" className="section bg-bg2 py-28">
-      <div className="container mx-auto max-w-[1200px] px-6">
+    <section id="contact" className="border-t border-white/[0.05] bg-[#0f1318] py-24 md:py-32">
+      <div className="mx-auto max-w-[1180px] px-4 md:px-6">
         <Reveal>
-          <p className="mb-3 font-mono text-[0.76rem] uppercase tracking-[3px] text-primary">10 / Contact</p>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="mb-14 text-3xl font-extrabold tracking-tight md:text-4xl">
-            Let&apos;s <span className="gradient-text">Connect</span>
-          </h2>
+          <SectionHeader index="06" eyebrow="Contact" title={<>Clear, direct, and <span className="text-gradient">professional communication.</span></>}>For relevant opportunities in SOC operations, incident response, threat hunting, and related cybersecurity roles, email is the fastest way to reach me.</SectionHeader>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-11 lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid gap-5 lg:grid-cols-[1fr_.95fr]">
           <Reveal>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-2xl border border-white/5 bg-card p-8">
-              <input
-                type="text"
-                placeholder="Your Name"
-                required
-                className="rounded-lg border border-white/10 bg-bg2 px-4 py-3 text-text outline-none transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                required
-                className="rounded-lg border border-white/10 bg-bg2 px-4 py-3 text-text outline-none transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20"
-              />
-              <textarea
-                rows={5}
-                placeholder="Message"
-                required
-                className="rounded-lg border border-white/10 bg-bg2 px-4 py-3 text-text outline-none transition-shadow focus:border-primary focus:ring-2 focus:ring-primary/20"
-              />
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-primary to-accent px-7 py-3.5 text-sm font-semibold text-[#03131a] shadow-glow transition-transform hover:-translate-y-1 hover:shadow-glow-green"
-              >
-                {submitted ? "Message Sent ✓" : "Send Message"}
-              </button>
-            </form>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {items.map(({ icon: Icon, label, value, href }) => (
+                href ? (
+                  <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined} className="enterprise-card rounded-2xl p-5 hover:bg-white/[0.02]">
+                    <div className="inline-flex rounded-lg border border-white/8 bg-white/[0.03] p-2 text-primary2"><Icon size={18} /></div>
+                    <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-slate-500">{label}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-200 break-all">{value}</p>
+                  </a>
+                ) : (
+                  <div key={label} className="enterprise-card rounded-2xl p-5">
+                    <div className="inline-flex rounded-lg border border-white/8 bg-white/[0.03] p-2 text-primary2"><Icon size={18} /></div>
+                    <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-slate-500">{label}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-200">{value}</p>
+                  </div>
+                )
+              ))}
+            </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="flex flex-col justify-center gap-4">
-              {[
-                { icon: "📍", text: siteConfig.location },
-                { icon: "✉️", text: siteConfig.email },
-                { icon: "☎️", text: siteConfig.phone },
-                { icon: "🔗", text: "linkedin.com/in/kishor-gorade-691a90251" },
-              ].map((item) => (
-                <div
-                  key={item.text}
-                  className="flex items-center gap-3 rounded-xl border border-white/5 bg-card px-5 py-4 text-[0.95rem] text-text2 transition-all hover:translate-x-1.5 hover:border-primary hover:text-text"
-                >
-                  <span className="text-lg">{item.icon}</span>
-                  {item.text}
-                </div>
-              ))}
+          <Reveal delay={0.08}>
+            <div className="enterprise-card rounded-2xl p-6 md:p-8">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Availability</p>
+              <h3 className="mt-3 font-display text-2xl font-medium text-white">Open to strong cybersecurity opportunities.</h3>
+              <p className="mt-4 text-sm leading-8 text-slate-300">
+                This portfolio is intentionally designed to present real operational capability rather than visual noise. If your team is hiring for SOC, blue team, incident response, or detection-focused roles, I would be glad to connect.
+              </p>
+              <a href={`mailto:${siteConfig.email}`} className="mt-8 inline-flex rounded-md bg-primary px-5 py-3 text-sm font-medium text-white hover:bg-primary2">Email Kishor</a>
             </div>
           </Reveal>
         </div>
