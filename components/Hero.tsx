@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FileDown, Mail, ShieldCheck, SearchCheck, Activity, Radar, MapPin, Building2, Layers } from "lucide-react";
+import Image from "next/image";
 import { siteConfig } from "@/lib/data";
 
 const focusAreas = [
@@ -64,9 +65,9 @@ export default function Hero() {
                 </div>
 
                 <div className="flex items-center gap-4 px-6 pt-6">
-                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/12 font-display text-lg font-semibold text-primary2 ring-1 ring-primary/25">
-                    KG
-                  </span>
+                  <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_18px_30px_-18px_rgba(0,0,0,0.85)]">
+                    <Image src="/profile.jpg" alt="Kishor Gorade" fill sizes="72px" className="object-cover object-top" priority />
+                  </div>
                   <div>
                     <p className="font-display text-lg font-semibold text-white">{siteConfig.name}</p>
                     <p className="mt-0.5 text-sm text-slate-400">{siteConfig.role}</p>
