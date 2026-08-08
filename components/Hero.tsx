@@ -33,7 +33,7 @@ export default function Hero() {
               </h1>
 
               <p className="signature-line mt-6 font-display text-lg font-medium text-primary2 md:text-xl">
-                {siteConfig.role}
+                Security Operations Engineer.@Qualys
               </p>
 
               <p className="mt-8 max-w-xl text-base leading-[1.9] text-slate-400 md:text-lg">
@@ -64,13 +64,13 @@ export default function Hero() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4 px-6 pt-6">
-                  <div className="relative h-[72px] w-[72px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_18px_30px_-18px_rgba(0,0,0,0.85)]">
-                    <Image src="/profile.jpg" alt="Kishor Gorade" fill sizes="72px" className="object-cover object-top" priority />
+                <div className="flex items-center gap-4 px-6 pt-6 md:gap-5">
+                  <div className="relative h-[104px] w-[88px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[0_22px_40px_-18px_rgba(0,0,0,0.85)]">
+                    <Image src="/profile.jpg" alt="Kishor Gorade" fill sizes="88px" className="object-cover object-center scale-[1.01]" priority />
                   </div>
                   <div>
-                    <p className="font-display text-lg font-semibold text-white">{siteConfig.name}</p>
-                    <p className="mt-0.5 text-sm text-slate-400">{siteConfig.role}</p>
+                    <p className="font-display text-xl font-semibold text-white">{siteConfig.name}</p>
+                    <p className="mt-0.5 text-sm text-slate-400">Security Operations Engineer.@Qualys</p>
                   </div>
                 </div>
 
