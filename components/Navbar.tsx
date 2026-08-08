@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b transition-all" style={{background: scrolled ? 'rgba(11,13,16,.92)' : 'rgba(11,13,16,.72)', borderColor: scrolled ? 'rgba(255,255,255,.06)' : 'transparent', backdropFilter: 'blur(14px)'}}>
+    <header className="fixed inset-x-0 top-0 z-50 border-b transition-all" style={{background: scrolled ? 'rgba(11,13,16,.92)' : 'rgba(11,13,16,.72)', borderColor: scrolled ? 'rgba(255,255,255,.04)' : 'transparent', backdropFilter: 'blur(14px)'}}>
       <div className="mx-auto flex max-w-[1160px] items-center justify-between px-4 py-4 md:px-6">
         <a href="#home" className="flex items-center gap-2 font-display text-base font-semibold md:text-lg">
           <ShieldCheck size={18} className="text-accent" />

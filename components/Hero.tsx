@@ -1,14 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FileDown, Mail, ShieldCheck, SearchCheck, Activity, Radar } from "lucide-react";
+import { FileDown, Mail, ShieldCheck, SearchCheck, Activity, Radar, MapPin, Building2, Layers } from "lucide-react";
 import { siteConfig } from "@/lib/data";
-
-const metrics = [
-  { label: 'Experience', value: '3+ Years' },
-  { label: 'Current Role', value: 'Qualys' },
-  { label: 'Core Area', value: 'SOC / IR / Hunting' },
-];
 
 const focusAreas = [
   { icon: ShieldCheck, title: 'Incident Response', text: 'Triage, investigation, containment, root cause analysis, and remediation support across enterprise environments.' },
@@ -17,67 +11,112 @@ const focusAreas = [
   { icon: Radar, title: 'Operational Security', text: 'Cross-functional SOC execution with documentation, ticketing, investigation discipline, and continuous improvement.' },
 ];
 
+const coreDomains = ['SIEM & Detection', 'Incident Response', 'Threat Hunting', 'Cloud & Email Security', 'Vulnerability Mgmt'];
+
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-28 md:pt-36">
-      <div className="absolute inset-0 grid-overlay opacity-50" />
+    <section id="home" className="relative overflow-hidden pt-32 md:pt-44">
+      <div className="absolute inset-0 grid-overlay opacity-40" />
       <div className="mx-auto max-w-[1180px] px-4 md:px-6">
-        <div className="hero-shell overflow-hidden rounded-[28px] px-5 py-8 md:px-10 md:py-12">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-            <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-              <p className="eyebrow mb-4 section-label">Enterprise Cybersecurity Portfolio</p>
-              <h1 className="font-display max-w-[11ch] text-4xl font-semibold leading-[1.06] text-white md:text-[4.2rem]">
-                Security Operations Engineer with a <span className="text-gradient">real operational background.</span>
+        <div className="hero-shell overflow-hidden rounded-[28px] px-1 py-2 md:px-4 md:py-6">
+          <div className="grid gap-14 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
+
+            {/* LEFT — editorial identity block */}
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <p className="signature-line eyebrow mb-8">Enterprise Cybersecurity Portfolio</p>
+
+              <p className="font-display text-lg font-medium text-slate-500 md:text-xl">Hello, I&apos;m</p>
+
+              <h1 className="font-display mt-2 text-[3rem] font-semibold leading-[1.02] text-white md:text-[5rem]">
+                {siteConfig.name}
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+
+              <p className="signature-line mt-6 font-display text-lg font-medium text-primary2 md:text-xl">
+                {siteConfig.role}
+              </p>
+
+              <p className="mt-8 max-w-xl text-base leading-[1.9] text-slate-400 md:text-lg">
                 {siteConfig.description}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="/Kishor_Gorade_Resume.pdf" download className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-white hover:bg-primary2">
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a href="/Kishor_Gorade_Resume.pdf" download className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-medium text-white transition hover:bg-primary2">
                   <FileDown size={16} /> Download Resume
                 </a>
-                <a href="#contact" className="inline-flex items-center gap-2 rounded-md border border-white/10 px-5 py-3 text-sm font-medium text-white hover:bg-white/[0.04]">
+                <a href="#contact" className="inline-flex items-center gap-2 rounded-md border border-white/12 px-6 py-3.5 text-sm font-medium text-white transition hover:border-white/25 hover:bg-white/[0.03]">
                   <Mail size={16} /> Contact
                 </a>
               </div>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {metrics.map((m) => (
-                  <div key={m.label} className="metric-tile rounded-xl p-4">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">{m.label}</p>
-                    <p className="mt-2 text-sm font-medium text-slate-100">{m.value}</p>
-                  </div>
-                ))}
-              </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.08 }}>
-              <div className="rounded-2xl border border-white/8 bg-black/15 p-4 md:p-5">
-                <div className="mb-4 flex items-center justify-between border-b border-white/6 pb-3">
-                  <div>
-                    <p className="text-sm font-medium text-white">Recruiter Overview</p>
-                    <p className="mt-1 text-xs text-slate-400">A quick and direct profile summary</p>
-                  </div>
-                  <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-primary2">Open to roles</span>
+            {/* RIGHT — Executive Identity Panel */}
+            <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.75, delay: 0.1 }}>
+              <div className="exec-card overflow-hidden rounded-2xl">
+                <div className="flex items-center justify-between px-6 pt-6">
+                  <span className="exec-badge text-primary2">Executive Profile</span>
+                  <span className="flex items-center gap-2">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                    </span>
+                    <span className="exec-badge text-slate-400">Open to roles</span>
+                  </span>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="enterprise-card-soft rounded-xl p-4">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Current Position</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">Security Operations Engineer at Qualys, focused on enterprise alert monitoring, incident response, and threat hunting.</p>
+                <div className="flex items-center gap-4 px-6 pt-6">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/12 font-display text-lg font-semibold text-primary2 ring-1 ring-primary/25">
+                    KG
+                  </span>
+                  <div>
+                    <p className="font-display text-lg font-semibold text-white">{siteConfig.name}</p>
+                    <p className="mt-0.5 text-sm text-slate-400">{siteConfig.role}</p>
                   </div>
-                  <div className="enterprise-card-soft rounded-xl p-4">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Tools & Platforms</p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {['Elastic SIEM','Qualys EDR','Qualys VMDR','Azure O365','Proofpoint TAP','Splunk','CrowdStrike','ServiceNow'].map((t) => (
-                        <span key={t} className="rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 text-xs text-slate-300">{t}</span>
-                      ))}
+                </div>
+
+                <div className="exec-divider mx-6 my-6" />
+
+                <div className="space-y-5 px-6">
+                  <div className="flex items-start gap-3">
+                    <Building2 size={16} className="mt-0.5 shrink-0 text-primary2" />
+                    <div>
+                      <p className="exec-badge text-slate-500">Company</p>
+                      <p className="mt-1 text-sm text-slate-200">Qualys</p>
                     </div>
                   </div>
-                  <div className="enterprise-card-soft rounded-xl p-4">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-slate-500">Professional Focus</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">SOC monitoring, incident triage, IOC analysis, phishing and BEC investigation, threat hunting, detection tuning, and SOC automation support.</p>
+                  <div className="flex items-start gap-3">
+                    <MapPin size={16} className="mt-0.5 shrink-0 text-primary2" />
+                    <div>
+                      <p className="exec-badge text-slate-500">Location</p>
+                      <p className="mt-1 text-sm text-slate-200">{siteConfig.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Layers size={16} className="mt-0.5 shrink-0 text-primary2" />
+                    <div>
+                      <p className="exec-badge text-slate-500">Core Domains</p>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {coreDomains.map((d) => (
+                          <span key={d} className="rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] text-slate-300">{d}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="exec-divider mx-6 my-6" />
+
+                <div className="grid grid-cols-3 divide-x divide-white/[0.06] px-6 pb-6">
+                  <div className="pr-3">
+                    <p className="font-display text-xl font-semibold text-white">3+</p>
+                    <p className="mt-1 text-[11px] text-slate-500">Years Exp.</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="font-display text-xl font-semibold text-white">24x7</p>
+                    <p className="mt-1 text-[11px] text-slate-500">SOC Coverage</p>
+                  </div>
+                  <div className="pl-3">
+                    <p className="font-display text-xl font-semibold text-white">8+</p>
+                    <p className="mt-1 text-[11px] text-slate-500">Platforms</p>
                   </div>
                 </div>
               </div>
@@ -85,12 +124,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {focusAreas.map(({ icon: Icon, title, text }, i) => (
-            <motion.article key={title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45, delay: i * 0.05 }} className="enterprise-card rounded-2xl p-5">
-              <div className="mb-4 inline-flex rounded-lg border border-primary/20 bg-primary/10 p-2 text-primary2"><Icon size={18} /></div>
+            <motion.article key={title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45, delay: i * 0.05 }} className="enterprise-card rounded-2xl p-6">
+              <div className="mb-5 inline-flex rounded-lg bg-primary/10 p-2.5 text-primary2"><Icon size={18} /></div>
               <h3 className="font-display text-lg font-medium text-white">{title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{text}</p>
             </motion.article>
           ))}
         </div>
